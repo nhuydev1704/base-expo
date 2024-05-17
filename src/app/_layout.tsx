@@ -1,23 +1,23 @@
 /* eslint-disable react/react-in-jsx-scope */
-
+import { useMMKVDevTools } from '@dev-plugins/react-native-mmkv';
 import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@react-navigation/native';
 import { SplashScreen, Stack, useNavigationContainerRef } from 'expo-router';
-import { StyleSheet, useColorScheme } from 'react-native';
+import { StyleSheet } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { TamaguiProvider } from 'tamagui';
 
 import { APIProvider } from '@/api';
 import { hydrateAuth, loadSelectedTheme } from '@/core';
 import { useThemeConfig } from '@/core/use-theme-config';
 
-import { TamaguiProvider } from 'tamagui';
-
 export { ErrorBoundary } from 'expo-router';
 
 // Import  global CSS file
 import '../../global.css';
+
 import tamaguiConfig from 'tamagui.config';
 
 export const unstable_settings = {
@@ -32,6 +32,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const navigationRef = useNavigationContainerRef();
   useReactNavigationDevTools(navigationRef);
+  useMMKVDevTools();
   return <RootLayoutNav />;
 }
 

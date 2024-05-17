@@ -1,47 +1,39 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
+import { Button } from 'tamagui';
 
 import { Cover } from '@/components/cover';
 import { useIsFirstTime } from '@/core/hooks';
-import { Button, FocusAwareStatusBar, SafeAreaView, Text, View } from '@/ui';
+import { FocusAwareStatusBar, SafeAreaView, Text, View } from '@/ui';
 export default function Onboarding() {
   const [_, setIsFirstTime] = useIsFirstTime();
   const router = useRouter();
   return (
-    <View className="flex h-full items-center  justify-center">
+    <View className="flex h-full bg-[#2C2B34]">
       <FocusAwareStatusBar />
       <View className="w-full flex-1">
         <Cover />
       </View>
-      <View className="justify-end ">
-        <Text className="my-3 text-center text-5xl font-bold">
-          Obytes Starter
+      <View className="w-4/5 justify-start px-10">
+        <Text className="my-3 text-4xl font-bold text-white">
+          Premium cars. Enjoy the luxury
         </Text>
-        <Text className="mb-2 text-center text-lg text-gray-600">
-          The right way to build your mobile app
-        </Text>
-
-        <Text className="my-1 pt-6 text-left text-lg">
-          🚀 Production-ready{' '}
-        </Text>
-        <Text className="my-1 text-left text-lg">
-          🥷 Developer experience + Productivity
-        </Text>
-        <Text className="my-1 text-left text-lg">
-          🧩 Minimal code and dependencies
-        </Text>
-        <Text className="my-1 text-left text-lg">
-          💪 well maintained third-party libraries
+        <Text className="mb-2 text-lg text-[#8E8E8E]">
+          Premium and prestige car daily rental. Experience the thrill at a
+          lower price
         </Text>
       </View>
-      <SafeAreaView className="mt-6">
-        <Button
-          label="Let's Get Started "
-          onPress={() => {
-            setIsFirstTime(false);
-            router.replace('/login');
-          }}
-        />
+      <SafeAreaView>
+        <View className="mb-10 px-[40px]">
+          <Button
+            onPress={() => {
+              setIsFirstTime(false);
+              router.replace('/login');
+            }}
+          >
+            Let's Get Started
+          </Button>
+        </View>
       </SafeAreaView>
     </View>
   );
