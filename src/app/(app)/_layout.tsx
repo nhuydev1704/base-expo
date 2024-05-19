@@ -12,6 +12,7 @@ import {
 
 export default function TabLayout() {
   const status = useAuth.use.status();
+  console.log('🚀 ~ TabLayout ~ status:', status);
   const [isFirstTime] = useIsFirstTime();
   const hideSplash = useCallback(async () => {
     await SplashScreen.hideAsync();

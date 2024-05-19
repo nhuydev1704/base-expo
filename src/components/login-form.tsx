@@ -2,9 +2,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
+import { Button } from 'tamagui';
 import * as z from 'zod';
 
-import { Button, ControlledInput, Text, View } from '@/ui';
+import { ControlledInput, Text, View } from '@/ui';
 
 const schema = z.object({
   name: z.string().optional(),
@@ -31,37 +32,27 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
     resolver: zodResolver(schema),
   });
   return (
-    <View className="flex-1 justify-center p-4">
+    <View className="flex-1 justify-center gap-4 px-[30px]">
       <Text testID="form-title" className="pb-6 text-center text-2xl">
-        Sign In
+        Đăng nhập
       </Text>
-
-      <ControlledInput
-        testID="name"
-        control={control}
-        name="name"
-        label="Name"
-      />
 
       <ControlledInput
         testID="email-input"
         control={control}
         name="email"
-        label="Email"
+        placeholder="Email"
       />
       <ControlledInput
         testID="password-input"
         control={control}
         name="password"
-        label="Password"
-        placeholder="***"
+        placeholder="Password"
         secureTextEntry={true}
       />
-      <Button
-        testID="login-button"
-        label="Login"
-        onPress={handleSubmit(onSubmit)}
-      />
+      <Button themeInverse onPress={handleSubmit(onSubmit)}>
+        Đăng nhập
+      </Button>
     </View>
   );
 };

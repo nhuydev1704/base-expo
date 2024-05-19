@@ -14,13 +14,14 @@ export default function Onboarding() {
       <View className="w-full flex-1">
         <Cover />
       </View>
-      <View className="w-4/5 justify-start px-10">
-        <Text className="my-3 text-4xl font-bold text-white">
-          Premium cars. Enjoy the luxury
+      <View className="justify-start px-10">
+        <Text className="mb-6 text-4xl font-bold text-white">
+          Chọn Xe Thông Minh, Lái Xe Tự Tin
         </Text>
         <Text className="mb-2 text-lg text-[#8E8E8E]">
-          Premium and prestige car daily rental. Experience the thrill at a
-          lower price
+          Ứng dụng toàn diện cho việc tìm kiếm và xem xét xe máy và ô tô. Đánh
+          giá chi tiết, hình ảnh chân thực và thông tin mới nhất về các dòng xe
+          sẽ giúp bạn lựa chọn chiếc xe hoàn hảo.
         </Text>
       </View>
       <SafeAreaView>
@@ -28,10 +29,10 @@ export default function Onboarding() {
           <Button
             onPress={() => {
               setIsFirstTime(false);
-              router.replace('/login');
+              router.replace('/');
             }}
           >
-            Let's Get Started
+            Bắt đầu ngay
           </Button>
         </View>
       </SafeAreaView>
