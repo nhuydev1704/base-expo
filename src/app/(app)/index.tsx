@@ -4,8 +4,9 @@ import React from 'react';
 import type { Post } from '@/api';
 import { usePosts } from '@/api';
 import { Card } from '@/components/card';
-import { EmptyList, FocusAwareStatusBar, Text, View } from '@/ui';
-import { Button } from 'tamagui';
+import Header from '@/components/home/Header';
+import Search from '@/components/home/Search';
+import { EmptyList, FocusAwareStatusBar, SafeAreaView, Text, View } from '@/ui';
 
 export default function Feed() {
   const { data, isPending, isError } = usePosts();
@@ -22,11 +23,14 @@ export default function Feed() {
     );
   }
   return (
-    <View className="flex-1 ">
+    <>
+      <SafeAreaView edges={['bottom']} />
       <FocusAwareStatusBar />
-      <Button theme="red" size="$3">
-        Inverse
-      </Button>
+
+      <Header />
+
+      <Search />
+
       <FlashList
         data={data}
         renderItem={renderItem}
@@ -34,6 +38,6 @@ export default function Feed() {
         ListEmptyComponent={<EmptyList isLoading={isPending} />}
         estimatedItemSize={300}
       />
-    </View>
+    </>
   );
 }

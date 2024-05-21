@@ -1,10 +1,9 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
+  '@dev-plugins/react-native-mmkv':
+    specifier: ^0.0.1
+    version: 0.0.1(expo@50.0.17)(react-native-mmkv@2.6.3)
   '@expo/metro-runtime':
     specifier: ^3.1.3
     version: 3.1.3(react-native@0.73.6)
@@ -1878,6 +1877,16 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
+
+  /@dev-plugins/react-native-mmkv@0.0.1(expo@50.0.17)(react-native-mmkv@2.6.3):
+    resolution: {integrity: sha512-eogoKAd9M/SyJcKZM+/oi2cxt/QZrCp88VgJc2pen8eRwSvKrabBrWyomryGVH69Q2y4/x6U4R02HEAdmUNsGQ==}
+    peerDependencies:
+      expo: '*'
+      react-native-mmkv: ^2.0.0
+    dependencies:
+      expo: 50.0.17(@babel/core@7.23.7)(@react-native/babel-preset@0.73.21)
+      react-native-mmkv: 2.6.3(react-native@0.73.6)(react@18.2.0)
+    dev: false
 
   /@dev-plugins/react-navigation@0.0.6(@react-navigation/core@6.4.10)(expo@50.0.17)(react@18.2.0):
     resolution: {integrity: sha512-DBuNhCyo0kqYPxZzirL4TZBemOGHBI1pxxF6LOU4WlsVaCK16PJvvtgoD2Tbd0xS64fdfaDyISrn16RbIncy5A==}
@@ -15823,3 +15832,7 @@ packages:
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
