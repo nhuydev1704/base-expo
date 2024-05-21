@@ -17,12 +17,12 @@ const Search = () => {
           borderTopRightRadius="$0"
           borderBottomRightRadius="$0"
           borderColor="$gray12Light"
-          backgroundColor="$gray5Light"
+          backgroundColor="$gray3Light"
           borderWidth="$0"
           borderRightWidth="$0"
         />
         <Input
-          placeholder="Searchword"
+          placeholder="Search"
           flex={1}
           borderColor="$gray12Light"
           focusStyle={{
@@ -30,7 +30,7 @@ const Search = () => {
           }}
           borderWidth="$0"
           // value={value}
-          backgroundColor="$gray5Light"
+          backgroundColor="$gray3Light"
           borderBottomLeftRadius="$4"
         />
         <Button
@@ -44,9 +44,10 @@ const Search = () => {
           borderTopLeftRadius="$0"
           borderBottomLeftRadius="$0"
           borderColor="$gray12Light"
-          backgroundColor="$gray5Light"
+          backgroundColor="$gray3Light"
           borderWidth="$0"
           borderLeftWidth="$0"
+          circular
         />
       </XStack>
     </View>

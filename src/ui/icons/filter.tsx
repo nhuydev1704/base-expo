@@ -1,33 +1,16 @@
 import * as React from 'react';
 import type { SvgProps } from 'react-native-svg';
-import Svg, { Defs, Image, Path, Pattern, Use } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 
-export function FilterIcon({ color = '#000', ...props }: SvgProps) {
+export function FilterIcon({ color = '#363853', ...props }: SvgProps) {
   return (
-    <Svg width={19} height={18} viewBox="0 0 19 18" fill="none" {...props}>
+    <Svg width={20} height={20} viewBox="0 0 24 24" fill="none" {...props}>
       <Path
-        fill="url(#pattern0_1839_85)"
-        d="M0.497559 0.506836H18.497559V17.506836H0.497559z"
+        d="M18.48 18.537H21M4.68 12L3 12.044M4.68 12a2.4 2.4 0 104.8 0 2.4 2.4 0 00-4.8 0zm5.489.044H21m-8.199-6.493H3m18 0h-2.52M3 18.537h9.801m5.079.063a2.4 2.4 0 11-4.8 0 2.4 2.4 0 014.8 0zm0-13.2a2.4 2.4 0 11-4.8 0 2.4 2.4 0 014.8 0z"
+        stroke={color}
+        strokeWidth={1.5}
+        strokeLinecap="round"
       />
-      <Defs>
-        <Pattern
-          id="pattern0_1839_85"
-          patternContentUnits="objectBoundingBox"
-          width={1}
-          height={1}
-        >
-          <Use
-            xlinkHref="#image0_1839_85"
-            transform="matrix(.05556 0 0 .05882 -.028 0)"
-          />
-        </Pattern>
-        <Image
-          id="image0_1839_85"
-          width={19}
-          height={17}
-          xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAARCAYAAAA/mJfHAAABj0lEQVR4nLWSvYrCUBCFz5WAVooIgqAmYqFPEMHKwk70AUTBQglYx8LnsBKtxFqwsIo/AQtBrBRfwMYiYJVpVJgtZLOrLrvq7g5cmLl3+Jhz5wgiYvxRSLcXzB9sIcRTMNfnwjAMZDIZyLKMWq0Gy7Jeg+12O2iaBq/Xi2q1iul0inq9/hTMkWmaJo7HI1qtFmRZhhAC3W4XwEW6pmkYjUZ3gGQyiclkcg0Lh8NgZgyHQxQKBSyXSwSDQQCXvyuXy0gkEnewSCTi5OJ9m6fTCZVKBaZpAgA8Hg/a7Tay2ezDMsWtNWazGSzLgqqqUBTlYdCXsN+E6+eWf4TZtg1d15FKpZDP57FYLF6DMTMajQYGgwFUVcXhcECpVMJ+v780EBETERuGwdFo9O7E43Gez+dMRGzbNgcCAdZ1nYmIV6sV+/1+7nQ6TETs+CwWi6FYLOJ8Pt9NFAqFnNzn82Gz2YCIsF6vr96f3mav10Oz2XTqdDqNfr8Pt9v9mjW22y3G4zEURUEul4MkSa9N9l28AT4DuXo4obC1AAAAAElFTkSuQmCC"
-        />
-      </Defs>
     </Svg>
   );
 }

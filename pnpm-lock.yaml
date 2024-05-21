@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@dev-plugins/react-native-mmkv':
     specifier: ^0.0.1
@@ -133,6 +137,9 @@ dependencies:
   react-native-svg:
     specifier: 14.1.0
     version: 14.1.0(react-native@0.73.6)(react@18.2.0)
+  react-native-swiper:
+    specifier: ^1.6.0
+    version: 1.6.0
   react-native-web:
     specifier: ~0.19.10
     version: 0.19.10(react-dom@18.2.0)(react@18.2.0)
@@ -13356,6 +13363,12 @@ packages:
       react-native: 0.73.6(@babel/core@7.23.7)(@babel/preset-env@7.23.8)(react@18.2.0)
     dev: false
 
+  /react-native-swiper@1.6.0:
+    resolution: {integrity: sha512-OnkTTZi+9uZUgy0uz1I9oYDhCU3z36lZn+LFsk9FXPRelxb/KeABzvPs3r3SrHWy1aA67KGtSFj0xNK2QD0NJQ==}
+    dependencies:
+      prop-types: 15.8.1
+    dev: false
+
   /react-native-web-internals@1.98.0:
     resolution: {integrity: sha512-JdxglFJoVdt2f/exSALmjLW2efkJERYpKjyKXxuyjNmwVjs6dyEJ0cCADrk1gTvpiQSgT4u7nJy6nQ5mkBuMhA==}
     dependencies:
@@ -15832,7 +15845,3 @@ packages:
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

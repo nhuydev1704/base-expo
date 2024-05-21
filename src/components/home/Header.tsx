@@ -41,7 +41,7 @@ const Header = () => {
           <Text fontSize={16}>Nguyễn Như Ý</Text>
         </View>
       </View>
-      <View flexDirection="row" gap={15}>
+      <View flexDirection="row" gap={20}>
         <TouchableOpacity>
           <Heart />
         </TouchableOpacity>
