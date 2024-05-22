@@ -38,6 +38,15 @@ export default function TabLayout() {
           tabBarTestID: 'feed-tab',
         }}
       />
+      {/* <Tabs.Screen
+        name="wishlist"
+        options={{
+          tabBarIcon: ({ color }) => <Home color={color} />,
+          tabBarLabel: 'My Wishlist',
+          title: 'Style',
+          tabBarTestID: 'wishlist-tab',
+        }}
+      /> */}
 
       <Tabs.Screen
         name="style"

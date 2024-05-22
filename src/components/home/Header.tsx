@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Avatar, Text, View } from 'tamagui';
@@ -42,9 +43,11 @@ const Header = () => {
         </View>
       </View>
       <View flexDirection="row" gap={20}>
-        <TouchableOpacity>
-          <Heart />
-        </TouchableOpacity>
+        <Link href="/wishlist" asChild>
+          <TouchableOpacity>
+            <Heart />
+          </TouchableOpacity>
+        </Link>
 
         <TouchableOpacity>
           <Bell />

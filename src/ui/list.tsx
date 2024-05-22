@@ -6,20 +6,25 @@ import Svg, { Circle, Path } from 'react-native-svg';
 import { Text } from './text';
 type Props = {
   isLoading: boolean;
+  loading?: any;
 };
 
 export const List = NFlashList;
 
-export const EmptyList = React.memo(({ isLoading }: Props) => {
+export const EmptyList = React.memo(({ isLoading, loading }: Props) => {
   return (
-    <View className="min-h-[400px] flex-1 items-center justify-center">
+    <View
+      className={
+        !loading ? 'min-h-[400px] flex-1 items-center justify-center' : ''
+      }
+    >
       {!isLoading ? (
         <View>
           <NoData />
           <Text className="pt-4 text-center">Sorry! No data found</Text>
         </View>
       ) : (
-        <ActivityIndicator />
+        loading || <ActivityIndicator />
       )}
     </View>
   );

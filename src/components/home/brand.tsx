@@ -5,6 +5,7 @@ import { Button, Image, Text, View } from 'tamagui';
 import { useBrands } from '@/api/brands/use-brands';
 import { EmptyList } from '@/ui';
 
+import LoadingBrand from './loading-brand';
 import Slide from './slide';
 
 const Brand = () => {
@@ -48,7 +49,7 @@ const Brand = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Text fontWeight="900" fontSize={16}>
+          <Text fontWeight="bold" fontSize={16}>
             Special Offers
           </Text>
           <TouchableOpacity onPress={() => refetch()}>
@@ -66,7 +67,7 @@ const Brand = () => {
         numColumns={5}
         renderItem={renderItem}
         keyExtractor={(_, index) => `item-${index}`}
-        ListEmptyComponent={<EmptyList isLoading />}
+        ListEmptyComponent={<EmptyList isLoading loading={<LoadingBrand />} />}
       />
     </View>
   );
