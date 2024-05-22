@@ -6,7 +6,7 @@ import { SearchIcon } from '@/ui/icons/search';
 
 const Search = () => {
   return (
-    <View padding={15}>
+    <View paddingHorizontal={15} paddingBottom={15}>
       <XStack alignItems="center">
         <Button
           size="$4"

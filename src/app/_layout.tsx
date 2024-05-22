@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { useMMKVDevTools } from '@dev-plugins/react-native-mmkv';
 import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
@@ -18,6 +17,7 @@ export { ErrorBoundary } from 'expo-router';
 // Import  global CSS file
 import '../../global.css';
 
+import React from 'react';
 import tamaguiConfig from 'tamagui.config';
 
 export const unstable_settings = {

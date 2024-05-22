@@ -1,18 +1,24 @@
 import React from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { View } from 'tamagui';
 
 import Brand from '@/components/home/brand';
 import Header from '@/components/home/header';
 import Product from '@/components/home/product';
 import Search from '@/components/home/search';
-import { FocusAwareStatusBar, SafeAreaView, ScrollView } from '@/ui';
+import { FocusAwareStatusBar, ScrollView } from '@/ui';
 
 export default function Feed() {
+  const insets = useSafeAreaInsets();
+
   return (
-    <ScrollView>
-      <SafeAreaView edges={['bottom']} />
+    <ScrollView stickyHeaderIndices={[1]} showsVerticalScrollIndicator={false}>
+      {/* <SafeAreaView edges={['bottom']} /> */}
       <FocusAwareStatusBar />
 
-      <Header />
+      <View backgroundColor="#fff" paddingBottom={10} paddingTop={insets.top}>
+        <Header />
+      </View>
 
       <Search />
 

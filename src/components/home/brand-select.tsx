@@ -3,71 +3,54 @@ import { Pressable, StyleSheet } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Text } from 'tamagui';
 
-const buttons = [
-  {
-    domain: 'mega',
-    text: 'Mega 6/45',
-  },
-  {
-    domain: 'power',
-    text: 'Power 6/55',
-  },
-  {
-    domain: 'max3',
-    text: 'Max 3D',
-  },
-  {
-    domain: 'keno',
-    text: 'Keno',
-  },
-  // {
-  //     domain: 'max4',
-  //     text: 'Max 4D',
-  // },
-];
 const BrandSelect = ({
   handleCallbackBrand,
-  brand,
+  categories,
 }: {
   handleCallbackBrand: (value: string) => void;
-  brand: string;
+  categories: string[];
 }) => {
   const ref = React.useRef<FlatList>(null);
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
+    if (categories.length === 0) return;
+
     ref.current?.scrollToIndex({
       index,
       animated: true,
       viewPosition: 0.5,
     });
-  }, [index]);
+  }, [index, categories.length]);
 
   return (
     <FlatList
       ref={ref}
-      data={buttons}
+      data={categories}
       style={{ flexGrow: 0 }}
-      keyExtractor={(item) => item.domain}
+      keyExtractor={(item) => item}
       contentContainerStyle={styles.containerList}
       showsHorizontalScrollIndicator={false}
       decelerationRate="fast"
       horizontal
+      removeClippedSubviews
+      windowSize={5}
+      initialNumToRender={5} // render 10 items initially
+      maxToRenderPerBatch={5} // render 5 items per batch
+      updateCellsBatchingPeriod={30} // time period between batch renders
       renderItem={({ item, index: fIndex }) => {
         return (
           <Pressable
-            onPressIn={() => {
+            onPress={() => {
               setIndex(fIndex);
-              handleCallbackBrand(item.domain);
+              handleCallbackBrand(item);
             }}
             style={[
               styles.btnAction,
-              brand === item.domain && styles.btnActionActive,
+              index === fIndex && styles.btnActionActive,
             ]}
           >
-            <Text color={brand === item.domain ? '#fff' : '#343434'}>
-              {item.text}
-            </Text>
+            <Text color={index === fIndex ? '#fff' : '#343434'}>{item}</Text>
           </Pressable>
         );
       }}
@@ -78,7 +61,7 @@ const BrandSelect = ({
 export default React.memo(BrandSelect);
 
 const styles = StyleSheet.create({
-  containerList: { marginBottom: 20, paddingHorizontal: 10, gap: 10 },
+  containerList: { marginBottom: 20, gap: 10, paddingHorizontal: 15 },
   titleLive: {
     paddingLeft: 16,
   },
@@ -90,7 +73,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   btnAction: {
-    paddingVertical: 10,
+    paddingVertical: 5,
     paddingHorizontal: 20,
     borderRadius: 50,
     borderWidth: 2,

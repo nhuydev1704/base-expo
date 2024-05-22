@@ -1,18 +1,19 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { Link, Redirect, SplashScreen, Tabs } from 'expo-router';
+import { Redirect, SplashScreen, Tabs } from 'expo-router';
 import React, { useCallback, useEffect } from 'react';
 
 import { useAuth, useIsFirstTime } from '@/core';
-import { Pressable, Text } from '@/ui';
 import { Home, Settings as SettingsIcon, Style as StyleIcon } from '@/ui/icons';
 
 export default function TabLayout() {
   const status = useAuth.use.status();
-  console.log('🚀 ~ TabLayout ~ status:', status);
+
   const [isFirstTime] = useIsFirstTime();
+
   const hideSplash = useCallback(async () => {
     await SplashScreen.hideAsync();
   }, []);
+
   useEffect(() => {
     if (status !== 'idle') {
       setTimeout(() => {
@@ -33,7 +34,7 @@ export default function TabLayout() {
         name="index"
         options={{
           tabBarIcon: ({ color }) => <Home color={color} />,
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Trang chủ',
           headerShown: false,
           tabBarTestID: 'feed-tab',
         }}
@@ -70,12 +71,12 @@ export default function TabLayout() {
   );
 }
 
-const CreateNewPostLink = () => {
-  return (
-    <Link href="/feed/add-post" asChild>
-      <Pressable>
-        <Text className="px-3 text-primary-300">Create</Text>
-      </Pressable>
-    </Link>
-  );
-};
+// const CreateNewPostLink = () => {
+//   return (
+//     <Link href="/feed/add-post" asChild>
+//       <Pressable>
+//         <Text className="px-3 text-primary-300">Create</Text>
+//       </Pressable>
+//     </Link>
+//   );
+// };

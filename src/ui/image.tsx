@@ -21,6 +21,7 @@ export const Image = ({
       placeholder={placeholder}
       style={style}
       {...props}
+      transition={200}
     />
   );
 };

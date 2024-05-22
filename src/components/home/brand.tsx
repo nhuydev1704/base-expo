@@ -8,8 +8,33 @@ import { EmptyList } from '@/ui';
 import LoadingBrand from './loading-brand';
 import Slide from './slide';
 
+const BRAND_HOME = [
+  'Toyota',
+  'Hyundai',
+  'Vinfast',
+  // 'Kia',
+  'Ford',
+  'Mazda',
+  'Honda',
+  'Mitsubishi',
+  'Peugeot',
+  'MG',
+];
+
+// eslint-disable-next-line max-lines-per-function
 const Brand = () => {
-  const { data, isPending, isError, refetch } = useBrands();
+  const { data, refetch } = useBrands();
+  const brands = [
+    ...(data
+      ?.filter((item: any) => BRAND_HOME.includes(item.alt))
+      ?.sort((a: any, b: any) => {
+        return BRAND_HOME.indexOf(a.alt) - BRAND_HOME.indexOf(b.alt);
+      }) || []),
+    {
+      src: require('assets/more.png'),
+      alt: 'Xem thêm',
+    },
+  ];
 
   const renderItem = React.useCallback(
     ({ item }: { item: any }) => (
@@ -26,7 +51,7 @@ const Brand = () => {
               objectFit="cover"
               // tintColor="#5B5B5B"
               aspectRatio={1 / 1}
-              width={35}
+              width={typeof item.src === 'string' ? 35 : 24}
               source={{
                 uri: item.src,
               }}
@@ -63,7 +88,7 @@ const Brand = () => {
         scrollEnabled={false}
         style={{ marginTop: 5 }}
         // horizontal
-        data={data}
+        data={brands}
         numColumns={5}
         renderItem={renderItem}
         keyExtractor={(_, index) => `item-${index}`}

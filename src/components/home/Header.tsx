@@ -22,7 +22,6 @@ const Header = () => {
   return (
     <View
       paddingHorizontal={20}
-      paddingTop={30}
       flexDirection="row"
       justifyContent="space-between"
       alignItems="center"
