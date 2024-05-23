@@ -20,8 +20,9 @@ export default function Feed() {
         <Header />
       </View>
 
-      <Search />
-
+      <View paddingHorizontal={15} paddingBottom={15}>
+        <Search isOpen />
+      </View>
       <Brand />
 
       <Product />

@@ -3,7 +3,7 @@ import { Redirect, SplashScreen, Tabs } from 'expo-router';
 import React, { useCallback, useEffect } from 'react';
 
 import { useAuth, useIsFirstTime } from '@/core';
-import { Home, Settings as SettingsIcon, Style as StyleIcon } from '@/ui/icons';
+import { Feed, Home, Settings as SettingsIcon } from '@/ui/icons';
 
 export default function TabLayout() {
   const status = useAuth.use.status();
@@ -50,12 +50,12 @@ export default function TabLayout() {
       /> */}
 
       <Tabs.Screen
-        name="style"
+        name="recommend"
         options={{
-          title: 'Style',
+          title: 'Gợi ý',
           headerShown: false,
-          tabBarIcon: ({ color }) => <StyleIcon color={color} />,
-          tabBarTestID: 'style-tab',
+          tabBarIcon: ({ color }) => <Feed color={color} />,
+          tabBarTestID: 'recommend-tab',
         }}
       />
       <Tabs.Screen
