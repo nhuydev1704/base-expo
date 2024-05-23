@@ -1,10 +1,14 @@
+import { useRouter } from 'expo-router';
 import React from 'react';
+import { Keyboard } from 'react-native';
 import { Button, Input, View, XStack } from 'tamagui';
 
 import { FilterIcon } from '@/ui/icons/filter';
 import { SearchIcon } from '@/ui/icons/search';
 
 const Search = () => {
+  const router = useRouter();
+
   return (
     <View paddingHorizontal={15} paddingBottom={15}>
       <XStack alignItems="center">
@@ -22,6 +26,10 @@ const Search = () => {
           borderRightWidth="$0"
         />
         <Input
+          onFocus={() => {
+            router.push('/search/modal');
+          }}
+          onBlur={() => Keyboard.dismiss()}
           placeholder="Search"
           flex={1}
           borderColor="$gray12Light"

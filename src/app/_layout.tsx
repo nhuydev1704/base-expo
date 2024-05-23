@@ -43,6 +43,14 @@ function RootLayoutNav() {
         <Stack.Screen name="(app)" options={{ headerShown: false }} />
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="search/modal"
+          options={{
+            // Set the presentation mode to search/modal for our modal route.
+            presentation: 'modal',
+            headerShown: false,
+          }}
+        />
       </Stack>
     </Providers>
   );
