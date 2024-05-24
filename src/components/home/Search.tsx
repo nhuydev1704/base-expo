@@ -15,16 +15,16 @@ const Search = ({ isOpen }: { isOpen?: boolean }) => {
 
   const router = useRouter();
 
-  React.useEffect(() => {
-    if (isOpen || !searchState.focus) {
-      inputRef.current.blur();
-    }
+  // React.useEffect(() => {
+  //   if (isOpen || !searchState.focus) {
+  //     inputRef.current.blur();
+  //   }
 
-    if (searchState.focus) {
-      // router.push('/search/modal');
-      inputRef.current.focus(); // Focus on the input field when searchState changes
-    }
-  }, [searchState.focus]); // This effect runs whenever searchState changes
+  //   if (searchState.focus) {
+  //     // router.push('/search/modal');
+  //     inputRef.current.focus(); // Focus on the input field when searchState changes
+  //   }
+  // }, [searchState.focus]); // This effect runs whenever searchState changes
 
   const onChange: any = (value: string) =>
     setSearchState({ ...searchState, value });

@@ -55,7 +55,7 @@
     </array>
     <key>UIAppFonts</key>
     <array>
-      <string>Inter.ttf</string>
+      <string>Quicksand.ttf</string>
     </array>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>

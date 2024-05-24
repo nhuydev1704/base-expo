@@ -3,26 +3,61 @@ import { FlatList } from 'react-native';
 import { Text, View } from 'tamagui';
 
 import type { Detail, Spec } from '@/api/cars/car.detail.types';
+import CapacityIcon from '@/ui/icons/capacity';
+import CarIcon from '@/ui/icons/car';
+import EnergyIcon from '@/ui/icons/energy';
+import GearIcon from '@/ui/icons/gear';
+import MaximumCapacity from '@/ui/icons/max-capacity';
+import SegmentIcon from '@/ui/icons/segment';
 import { MoneyText } from '@/util';
 
-const DetailInfo = ({ title, value }: { title: string; value: string }) => {
+const DetailInfo = ({
+  title,
+  value,
+  icon,
+}: {
+  title: string;
+  value: string;
+  icon: any;
+}) => {
   return (
-    <View gap={5} flex={1} marginBottom={8}>
-      <Text fontSize={10} color="#8c8c8c">
-        {title}
-      </Text>
-      <Text>{value}</Text>
+    <View
+      flex={1}
+      flexDirection="row"
+      alignItems="center"
+      gap={10}
+      marginBottom={10}
+    >
+      {icon}
+
+      <View gap={5}>
+        <Text fontSize={12} color="#8c8c8c">
+          {title}
+        </Text>
+        <Text fontSize={16} fontWeight="600">
+          {value}
+        </Text>
+      </View>
     </View>
   );
 };
 
+const ICONS = [
+  <CarIcon />,
+  <SegmentIcon />,
+  <CapacityIcon />,
+  <MaximumCapacity />,
+  <GearIcon />,
+  <EnergyIcon />,
+];
+
 const ProductInfo = ({ productDetail }: { productDetail: Detail }) => {
   return (
-    <View marginTop={20} paddingHorizontal={10} gap={10}>
-      <Text fontWeight="bold" fontSize={20}>
+    <View marginTop={10} paddingHorizontal={10} gap={10}>
+      <Text fontWeight="bold" fontSize={24}>
         {productDetail.carModelName}
       </Text>
-      <Text fontWeight="bold" color="#576B95">
+      <Text fontSize={18} fontWeight="bold" color="#576B95">
         {MoneyText({
           minPrice: productDetail?.minPrice,
           maxPrice: productDetail?.maxPrice,
@@ -34,17 +69,19 @@ const ProductInfo = ({ productDetail }: { productDetail: Detail }) => {
         </Text> */}
 
         <FlatList
+          scrollEnabled={false}
           data={productDetail.specs}
-          renderItem={({ item }: { item: Spec; index: number }) => {
+          renderItem={({ item, index }: { item: Spec; index: number }) => {
             return (
               <DetailInfo
                 key={item.code}
+                icon={ICONS[index]}
                 title={item.name}
                 value={item.value}
               />
             );
           }}
-          numColumns={3}
+          numColumns={2}
         />
 
         <View>
@@ -57,4 +94,4 @@ const ProductInfo = ({ productDetail }: { productDetail: Detail }) => {
   );
 };
 
-export default ProductInfo;
+export default React.memo(ProductInfo);

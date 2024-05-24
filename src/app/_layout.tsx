@@ -2,6 +2,7 @@ import { useMMKVDevTools } from '@dev-plugins/react-native-mmkv';
 import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
 import { SplashScreen, Stack, useNavigationContainerRef } from 'expo-router';
 import { StyleSheet } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
@@ -30,6 +31,13 @@ loadSelectedTheme();
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  useFonts({
+    QuicksandLight: require('assets/fonts/Quicksand-Light.ttf'),
+    QuicksandSemiBold: require('assets/fonts/Quicksand-SemiBold.ttf'),
+    Quicksand: require('assets/fonts/Quicksand-Regular.ttf'),
+    QuicksandBold: require('assets/fonts/Quicksand-Bold.ttf'),
+  });
+
   const navigationRef = useNavigationContainerRef();
   useReactNavigationDevTools(navigationRef);
   useMMKVDevTools();

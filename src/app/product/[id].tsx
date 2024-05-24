@@ -1,15 +1,25 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import * as React from 'react';
-import { Button } from 'tamagui';
+import { Button, ScrollView, View } from 'tamagui';
 
 import { useCar } from '@/api/cars/use-car';
 import BackButton from '@/components/back-button';
 import ImageProduct from '@/components/product/images';
 import ProductInfo from '@/components/product/product-info';
-import { ActivityIndicator, FocusAwareStatusBar, Text, View } from '@/ui';
+import Qa from '@/components/product/qa';
+import ReviewCar from '@/components/product/review';
+import {
+  ActivityIndicator,
+  FocusAwareStatusBar,
+  SafeAreaView,
+  Text,
+} from '@/ui';
 import { Heart } from '@/ui/icons/heart';
+import ParameterIcon from '@/ui/icons/parameter';
 
+// eslint-disable-next-line max-lines-per-function
 export default function ProductDetail() {
+  const scrollViewRef = React.useRef(null);
   const local = useLocalSearchParams<{ id: string }>();
 
   const { data, isPending, isError } = useCar({
@@ -56,13 +66,33 @@ export default function ProductDetail() {
   }
 
   return (
-    <View className="flex-1 p-3 ">
+    <View flex={1}>
       {Screen}
-      <ImageProduct
-        carModelPicDtoUrl={data.detail.carModelPicDtoUrl}
-        colourList={data.detail.colourList}
-      />
-      <ProductInfo productDetail={data.detail} />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        ref={scrollViewRef}
+        className="flex-1 p-3"
+      >
+        <ImageProduct
+          carModelPicDtoUrl={data.detail.carModelPicDtoUrl}
+          colourList={data.detail.colourList}
+        />
+        <ProductInfo productDetail={data.detail} />
+
+        <ReviewCar
+          scrollViewRef={scrollViewRef}
+          reviews={data.detail.reviews}
+        />
+
+        <Qa faqs={data.detail.faqs} />
+      </ScrollView>
+      <View flexDirection="row" justifyContent="center">
+        <Button borderColor="#fff" themeInverse fontWeight="600" width={400}>
+          <ParameterIcon color="white" />
+          Thông số kỹ thuật
+        </Button>
+      </View>
+      <SafeAreaView edges={['bottom']} />
     </View>
   );
 }
