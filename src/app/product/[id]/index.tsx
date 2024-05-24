@@ -1,9 +1,10 @@
-import { router, Stack, useLocalSearchParams } from 'expo-router';
+import { Link, router, Stack, useLocalSearchParams } from 'expo-router';
 import * as React from 'react';
 import { Button, ScrollView, View } from 'tamagui';
 
 import { useCar } from '@/api/cars/use-car';
 import BackButton from '@/components/back-button';
+import Compare from '@/components/product/compare';
 import ImageProduct from '@/components/product/images';
 import ProductInfo from '@/components/product/product-info';
 import Qa from '@/components/product/qa';
@@ -79,6 +80,8 @@ export default function ProductDetail() {
         />
         <ProductInfo productDetail={data.detail} />
 
+        <Compare pros={data.detail.pros} cons={data.detail.cons} />
+
         <ReviewCar
           scrollViewRef={scrollViewRef}
           reviews={data.detail.reviews}
@@ -87,10 +90,12 @@ export default function ProductDetail() {
         <Qa faqs={data.detail.faqs} />
       </ScrollView>
       <View flexDirection="row" justifyContent="center">
-        <Button borderColor="#fff" themeInverse fontWeight="600" width={400}>
-          <ParameterIcon color="white" />
-          Thông số kỹ thuật
-        </Button>
+        <Link href={`/product/${data.car_id as string}/specifications`} asChild>
+          <Button borderColor="#fff" themeInverse fontWeight="600" width={400}>
+            <ParameterIcon color="white" />
+            Thông số kỹ thuật
+          </Button>
+        </Link>
       </View>
       <SafeAreaView edges={['bottom']} />
     </View>

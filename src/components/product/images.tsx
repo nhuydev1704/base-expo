@@ -66,7 +66,7 @@ const ImageProduct = ({
       <View aspectRatio={16 / 9}>
         {selectedColour ? (
           <Image
-            className="h-full w-full rounded-2xl"
+            className="h-full w-full"
             contentFit="cover"
             source={{
               uri: selectedColour.image.url,
@@ -82,7 +82,7 @@ const ImageProduct = ({
             {carModelPicDtoUrl.map((url, index) => (
               <Image
                 key={index}
-                className="h-full w-full rounded-2xl"
+                className="h-full w-full"
                 contentFit="cover"
                 source={{
                   uri: url.url,
@@ -101,14 +101,14 @@ const ImageProduct = ({
           borderRadius={24}
           gap={10}
         >
-          {colourList.map((colour) => (
+          {colourList.map((colour, index) => (
             <TouchableOpacity
               onPress={() =>
                 JSON.stringify(colour) === JSON.stringify(selectedColour)
                   ? setSelectedColour('')
                   : setSelectedColour(colour)
               }
-              key={colour.code}
+              key={index}
             >
               <View flexDirection="row" justifyContent="center" gap={5}>
                 <View

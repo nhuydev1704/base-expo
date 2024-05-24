@@ -10,7 +10,7 @@ import { MoneyText } from '@/util';
 
 const ProductCard = ({ car }: { car: ICar & CarModel }) => {
   return (
-    <Link href={`/product/${(car?.id || car.detail?.id) as string}`} asChild>
+    <Link href={`/product/${(car?.id || car.detail?.id) as string}/`} asChild>
       <View flex={1} padding={20} gap={10}>
         <View
           paddingTop={20}

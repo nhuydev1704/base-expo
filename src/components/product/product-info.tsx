@@ -30,11 +30,11 @@ const DetailInfo = ({
     >
       {icon}
 
-      <View gap={5}>
+      <View gap={5} flex={1}>
         <Text fontSize={12} color="#8c8c8c">
           {title}
         </Text>
-        <Text fontSize={16} fontWeight="600">
+        <Text fontSize={14} wordWrap="break-word" fontWeight="600">
           {value}
         </Text>
       </View>
@@ -74,7 +74,7 @@ const ProductInfo = ({ productDetail }: { productDetail: Detail }) => {
           renderItem={({ item, index }: { item: Spec; index: number }) => {
             return (
               <DetailInfo
-                key={item.code}
+                key={index}
                 icon={ICONS[index]}
                 title={item.name}
                 value={item.value}
