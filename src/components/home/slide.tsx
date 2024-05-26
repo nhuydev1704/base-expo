@@ -12,7 +12,7 @@ export default () => (
       activeDot={
         <View
           style={{
-            backgroundColor: '#363853',
+            backgroundColor: '#fff',
             width: 22,
             height: 6,
             borderRadius: 4,
@@ -30,7 +30,7 @@ export default () => (
         borderRadius={28}
         testID="Hello"
         source={{
-          uri: 'https://res.cloudinary.com/dxvj1wsbq/image/upload/v1716308428/Background_agyjnr.png',
+          uri: 'https://images.autofun.vn/file1/75700637e9c24f8883e94a84e075917e_678x290.jpg',
         }}
       />
       <Image
@@ -39,7 +39,7 @@ export default () => (
         borderRadius={28}
         testID="Hello1"
         source={{
-          uri: 'https://res.cloudinary.com/dxvj1wsbq/image/upload/v1716308428/Background_agyjnr.png',
+          uri: 'https://images.autofun.vn/file1/d11d1769ef78497eb2af848face4d531_678x290.jpg',
         }}
       />
       <Image
@@ -48,7 +48,7 @@ export default () => (
         borderRadius={28}
         testID="Hello2"
         source={{
-          uri: 'https://res.cloudinary.com/dxvj1wsbq/image/upload/v1716308428/Background_agyjnr.png',
+          uri: 'https://images.autofun.vn/file1/91201bbb4660407a88f3b6849f56b41a_678x290.jpg',
         }}
       />
     </Swiper>

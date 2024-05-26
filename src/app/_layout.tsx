@@ -4,7 +4,7 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack, useNavigationContainerRef } from 'expo-router';
-import { StyleSheet } from 'react-native';
+import { LogBox, StyleSheet } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { TamaguiProvider } from 'tamagui';
@@ -20,6 +20,8 @@ import '../../global.css';
 
 import React from 'react';
 import tamaguiConfig from 'tamagui.config';
+
+LogBox.ignoreLogs([/^Cannot update a component/]);
 
 export const unstable_settings = {
   initialRouteName: '(app)',

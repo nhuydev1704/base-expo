@@ -51,7 +51,7 @@ const Search = ({ isOpen }: { isOpen?: boolean }) => {
           isOpen && setSearchState({ ...searchState, focus: true });
         }}
         onChangeText={onChange}
-        placeholder="Search"
+        placeholder="Tìm kiếm ..."
         flex={1}
         borderColor="$gray12Light"
         focusStyle={{

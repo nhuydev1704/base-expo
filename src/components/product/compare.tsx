@@ -47,7 +47,6 @@ const Compare = ({ pros, cons }: { pros: string; cons: string }) => {
             tagsStyles={{
               ul: {
                 margin: 0,
-                padding: '0 10px',
               },
               li: {
                 marginLeft: 10,
@@ -56,18 +55,6 @@ const Compare = ({ pros, cons }: { pros: string; cons: string }) => {
             }}
           />
         </View>
-        {/* 
-      <TabsContent padding={10} value="tab2">
-        <View>
-          <RenderHTML
-            ignoredDomTags={['colgroup']}
-            contentWidth={WINDOW_WIDTH - 100}
-            source={{
-              html: cons,
-            }}
-          />
-        </View>
-      </TabsContent> */}
       </Tabs>
     )
   );

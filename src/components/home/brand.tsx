@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
 import { Button, Image, Text, View } from 'tamagui';
@@ -46,17 +47,19 @@ const Brand = () => {
         marginVertical={10}
       >
         <View alignItems="center">
-          <Button circular size="$5">
-            <Image
-              objectFit="cover"
-              // tintColor="#5B5B5B"
-              aspectRatio={1 / 1}
-              width={typeof item.src === 'string' ? 35 : 24}
-              source={{
-                uri: item.src,
-              }}
-            />
-          </Button>
+          <Link href={item.alt === 'Xem thêm' ? '/car' : '/'} asChild>
+            <Button circular size="$5">
+              <Image
+                objectFit="cover"
+                // tintColor="#5B5B5B"
+                aspectRatio={1 / 1}
+                width={typeof item.src === 'string' ? 35 : 24}
+                source={{
+                  uri: item.src,
+                }}
+              />
+            </Button>
+          </Link>
           <Text marginTop={10} color="#5B5B5B" textAlign="center" fontSize={12}>
             {item.alt}
           </Text>
