@@ -27,13 +27,14 @@ export default function Recommend() {
   }, []);
 
   return (
-    <>
+    <View flex={1}>
       <FocusAwareStatusBar />
       {/* <ScrollView className="px-4"> */}
-      <SafeAreaView edges={['top']} className="flex-1">
-        <View paddingHorizontal={10} flex={1} marginBottom={60}>
-          <SearchBrand onChange={onChange} />
-        </View>
+      <SafeAreaView edges={['top']} />
+      <View paddingHorizontal={10} marginBottom={10}>
+        <SearchBrand onChange={onChange} />
+      </View>
+      <View flex={1}>
         <AlphabetList
           // scrollEnabled={false}
           data={
@@ -86,9 +87,9 @@ export default function Recommend() {
           indexContainerStyle={styles.indexContainerStyle}
           letterListContainerStyle={styles.letterListContainerStyle}
         />
-      </SafeAreaView>
+      </View>
       {/* </ScrollView> */}
-    </>
+    </View>
   );
 }
 

@@ -47,7 +47,10 @@ const Brand = () => {
         marginVertical={10}
       >
         <View alignItems="center">
-          <Link href={item.alt === 'Xem thêm' ? '/car' : '/'} asChild>
+          <Link
+            href={item.alt === 'Xem thêm' ? '/car' : `/product/${item.id}/list`}
+            asChild
+          >
             <Button circular size="$5">
               <Image
                 objectFit="cover"

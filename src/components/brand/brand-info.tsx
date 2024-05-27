@@ -11,7 +11,7 @@ const BrandInfo = ({ info }: { info: Info }) => {
   const modal = useModal();
 
   return (
-    <View>
+    <View backgroundColor="#fff" paddingBottom={5}>
       <View justifyContent="center" alignItems="center" gap={5}>
         <Image
           source={{

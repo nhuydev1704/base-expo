@@ -1,10 +1,11 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import React from 'react';
-import { Text, View } from 'tamagui';
+import { ScrollView } from 'tamagui';
 
 import { useBrand } from '@/api/brands/use-brand';
 import BackButton from '@/components/back-button';
 import BrandInfo from '@/components/brand/brand-info';
+import CarList from '@/components/brand/car-list';
 import { FocusAwareStatusBar } from '@/ui';
 
 const ProductListPage = () => {
@@ -34,11 +35,15 @@ const ProductListPage = () => {
   if (!brand?.data) return;
 
   return (
-    <View>
+    <ScrollView stickyHeaderIndices={[1]}>
       {Screen}
       <BrandInfo info={brand.data.info} />
-      <Text>ProductListPage</Text>
-    </View>
+      <CarList
+        brandId={local.brand}
+        name={brand.data.info.brandName}
+        models={brand.data.models}
+      />
+    </ScrollView>
   );
 };
 

@@ -6,6 +6,7 @@ export interface IBrand {
   faq: Faq;
   info: Info;
   compare: Compare;
+  models: string[];
 }
 
 export interface Faq {
