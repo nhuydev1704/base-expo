@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import * as React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { AlphabetList } from 'react-native-section-alphabet-list';
@@ -13,7 +14,7 @@ export default function Recommend() {
 
   const debounceSearch = useDebounceValue(search, 300);
 
-  const { data, refetch } = useBrands();
+  const { data } = useBrands();
   const dataRender = data?.map((item: any) => ({
     key: item.id,
     value: item.alt,
@@ -45,22 +46,24 @@ export default function Recommend() {
             }) as any
           }
           renderCustomItem={(item: any) => (
-            <TouchableOpacity>
-              <View
-                flexDirection="row"
-                gap={10}
-                alignItems="center"
-                padding={10}
-              >
-                <Image
-                  style={{ height: 40, aspectRatio: '1/1' }}
-                  source={{
-                    uri: item.src,
-                  }}
-                />
-                <Text style={styles.listItemLabel}>{item.value}</Text>
-              </View>
-            </TouchableOpacity>
+            <Link href={`/product/${item.id}/list`} asChild>
+              <TouchableOpacity>
+                <View
+                  flexDirection="row"
+                  gap={10}
+                  alignItems="center"
+                  padding={10}
+                >
+                  <Image
+                    style={{ height: 40, aspectRatio: '1/1' }}
+                    source={{
+                      uri: item.src,
+                    }}
+                  />
+                  <Text style={styles.listItemLabel}>{item.value}</Text>
+                </View>
+              </TouchableOpacity>
+            </Link>
           )}
           renderCustomSectionHeader={(section) => (
             <View
