@@ -3,7 +3,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Avatar, Text, View } from 'tamagui';
 
-import { Bell } from '@/ui/icons/bell';
+import { getToken } from '@/core/auth/utils';
 import { Heart } from '@/ui/icons/heart';
 
 const returnTime = () => {
@@ -19,6 +19,8 @@ const returnTime = () => {
   }
 };
 const Header = () => {
+  const token = getToken();
+
   return (
     <View
       paddingHorizontal={20}
@@ -38,19 +40,21 @@ const Header = () => {
           <Text color="#8E8E8E" fontSize={13} fontWeight="600">
             {returnTime()} 👋
           </Text>
-          <Text fontSize={16}>Nguyễn Như Ý</Text>
+          <Text fontSize={16}>
+            {token ? token.user.name : 'Khách hàng mới'}
+          </Text>
         </View>
       </View>
       <View flexDirection="row" gap={20}>
-        <Link href="/wishlist" asChild>
+        <Link href="/wishlist/" asChild>
           <TouchableOpacity>
             <Heart />
           </TouchableOpacity>
         </Link>
 
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <Bell />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );

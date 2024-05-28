@@ -5,7 +5,6 @@ import { View } from 'tamagui';
 import Brand from '@/components/home/brand';
 import Header from '@/components/home/header';
 import Product from '@/components/home/product';
-import Search from '@/components/home/search';
 import { FocusAwareStatusBar, ScrollView } from '@/ui';
 
 export default function Feed() {
@@ -20,9 +19,9 @@ export default function Feed() {
         <Header />
       </View>
 
-      <View paddingHorizontal={15} paddingBottom={15}>
+      {/* <View paddingHorizontal={15} paddingBottom={15}>
         <Search isOpen />
-      </View>
+      </View> */}
       <Brand />
 
       <Product />

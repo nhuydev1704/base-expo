@@ -1,40 +1,42 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Env } from '@env';
-import { useColorScheme } from 'nativewind';
+import { Link } from 'expo-router';
+import { Alert } from 'react-native';
+import { Button } from 'tamagui';
 
 import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
-import { LanguageItem } from '@/components/settings/language-item';
-import { ThemeItem } from '@/components/settings/theme-item';
-import { translate, useAuth } from '@/core';
-import { colors, FocusAwareStatusBar, ScrollView, Text, View } from '@/ui';
-import { Github, Rate, Share, Support, Website } from '@/ui/icons';
+import { useAuth } from '@/core';
+import { getToken } from '@/core/auth/utils';
+import { FocusAwareStatusBar, ScrollView, Text, View } from '@/ui';
 
+// eslint-disable-next-line max-lines-per-function
 export default function Settings() {
   const signOut = useAuth.use.signOut();
-  const { colorScheme } = useColorScheme();
-  const iconColor =
-    colorScheme === 'dark' ? colors.neutral[400] : colors.neutral[500];
+  const token = getToken();
+  // const { colorScheme } = useColorScheme();
+  // const iconColor =
+  //   colorScheme === 'dark' ? colors.neutral[400] : colors.neutral[500];
   return (
     <>
       <FocusAwareStatusBar />
 
       <ScrollView>
         <View className="flex-1 px-4 pt-16 ">
-          <Text className="text-xl font-bold">
-            {translate('settings.title')}
-          </Text>
-          <ItemsContainer title="settings.generale">
+          <Text className="text-xl font-bold">Cấu hình</Text>
+          {/* <ItemsContainer title="settings.generale">
             <LanguageItem />
             <ThemeItem />
-          </ItemsContainer>
+          </ItemsContainer> */}
 
           <ItemsContainer title="settings.about">
+            {token && <Item title="Họ tên" value={token.user.name} />}
+            {token && <Item title="Email" value={token.user.email} />}
             <Item text="settings.app_name" value={Env.NAME} />
             <Item text="settings.version" value={Env.VERSION} />
           </ItemsContainer>
 
-          <ItemsContainer title="settings.support_us">
+          {/* <ItemsContainer title="settings.support_us">
             <Item
               text="settings.share"
               icon={<Share color={iconColor} />}
@@ -65,12 +67,38 @@ export default function Settings() {
               icon={<Website color={iconColor} />}
               onPress={() => {}}
             />
-          </ItemsContainer>
+          </ItemsContainer> */}
 
-          <View className="my-8">
-            <ItemsContainer>
-              <Item text="settings.logout" onPress={signOut} />
-            </ItemsContainer>
+          <View className="my-4">
+            {token ? (
+              <ItemsContainer>
+                <Item
+                  title="Đăng xuất"
+                  onPress={() => {
+                    Alert.alert(
+                      'Đăng xuất',
+                      'Bạn chắc chắn muốn đăng xuất tài khoản?',
+                      [
+                        {
+                          text: 'Huỷ',
+                          style: 'cancel',
+                        },
+                        {
+                          text: 'Đăng xuất',
+                          onPress: signOut,
+                        },
+                      ]
+                    );
+                  }}
+                />
+              </ItemsContainer>
+            ) : (
+              <Link href="/login" asChild>
+                <Button marginTop={10} fontWeight="bold">
+                  Đăng nhập
+                </Button>
+              </Link>
+            )}
           </View>
         </View>
       </ScrollView>

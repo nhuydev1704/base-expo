@@ -1,6 +1,6 @@
 import { Link } from 'expo-router';
 import React from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList } from 'react-native';
 import { Button, Image, Text, View } from 'tamagui';
 
 import { useBrands } from '@/api/brands/use-brands';
@@ -24,7 +24,7 @@ const BRAND_HOME = [
 
 // eslint-disable-next-line max-lines-per-function
 const Brand = () => {
-  const { data, refetch } = useBrands();
+  const { data } = useBrands();
   const brands = [
     ...(data
       ?.filter((item: any) => BRAND_HOME.includes(item.alt))
@@ -73,9 +73,9 @@ const Brand = () => {
   );
 
   return (
-    <View>
+    <>
       <View paddingHorizontal={15} gap={10} paddingVertical={6}>
-        <View
+        {/* <View
           flexDirection="row"
           justifyContent="space-between"
           alignItems="center"
@@ -86,7 +86,7 @@ const Brand = () => {
           <TouchableOpacity onPress={() => refetch()}>
             <Text fontWeight="normal">See All</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         <Slide />
       </View>
@@ -100,7 +100,7 @@ const Brand = () => {
         keyExtractor={(_, index) => `item-${index}`}
         ListEmptyComponent={<EmptyList isLoading loading={<LoadingBrand />} />}
       />
-    </View>
+    </>
   );
 };
 

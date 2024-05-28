@@ -6,12 +6,11 @@ import { Text, View } from 'tamagui';
 import { client } from '@/api';
 import type { ICar } from '@/api/cars/types';
 import type { CarModel } from '@/api/home/types';
-import { ActivityIndicator, EmptyList, HEIGHT } from '@/ui';
+import { ActivityIndicator, EmptyList } from '@/ui';
 
 import ProductCard from '../product/product-card';
 import CarOption from './car-option';
 
-// eslint-disable-next-line max-lines-per-function
 const CarList = ({
   models,
   name,
@@ -57,17 +56,12 @@ const CarList = ({
           <ActivityIndicator />
         </View>
       ) : (
-        <View minHeight={HEIGHT}>
+        <View minHeight={400}>
           <FlashList
             scrollEnabled={false}
-            renderItem={({
-              item,
-              index,
-            }: {
-              item: ICar & CarModel;
-              index: number;
-            }) => {
-              return <ProductCard car={item} key={index} />;
+            keyExtractor={(car) => car.id}
+            renderItem={({ item }: { item: ICar & CarModel }) => {
+              return <ProductCard car={item} />;
             }}
             numColumns={2}
             estimatedItemSize={200}

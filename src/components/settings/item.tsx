@@ -5,13 +5,14 @@ import { Pressable, Text, View } from '@/ui';
 import { ArrowRight } from '@/ui/icons';
 
 type ItemProps = {
-  text: TxKeyPath;
+  text?: TxKeyPath;
   value?: string;
   onPress?: () => void;
   icon?: React.ReactNode;
+  title?: any;
 };
 
-export const Item = ({ text, value, icon, onPress }: ItemProps) => {
+export const Item = ({ title, text, value, icon, onPress }: ItemProps) => {
   const isPressable = onPress !== undefined;
   return (
     <Pressable
@@ -21,7 +22,7 @@ export const Item = ({ text, value, icon, onPress }: ItemProps) => {
     >
       <View className="flex-row items-center">
         {icon && <View className="pr-2">{icon}</View>}
-        <Text tx={text} />
+        {title ? <Text>{title}</Text> : <Text tx={text} />}
       </View>
       <View className="flex-row items-center">
         <Text className="text-neutral-600 dark:text-white">{value}</Text>

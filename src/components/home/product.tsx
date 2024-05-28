@@ -1,6 +1,5 @@
 import { FlashList } from '@shopify/flash-list';
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import { Text, View } from 'tamagui';
 
 import type { ICar } from '@/api/cars/types';
@@ -33,9 +32,9 @@ const Product = () => {
         <Text fontWeight="bold" fontSize={18}>
           Nổi bật
         </Text>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <Text fontWeight="normal">Xem thêm</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       {/* {[...new Array(10)].map((_, index) => {
         return <ProductCard key={index} />;

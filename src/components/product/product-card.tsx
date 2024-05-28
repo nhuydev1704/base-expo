@@ -1,11 +1,11 @@
 import { Link } from 'expo-router';
 import React from 'react';
-import { Button, Text, View, XStack } from 'tamagui';
+import { Text, View, XStack } from 'tamagui';
 
 import type { ICar } from '@/api/cars/types';
 import type { CarModel } from '@/api/home/types';
 import { Image } from '@/ui';
-import { Heart } from '@/ui/icons/heart';
+import ButtonHeart from '@/ui/button-heart';
 import { MoneyText } from '@/util';
 
 const ProductCard = ({ car }: { car: ICar & CarModel }) => {
@@ -27,9 +27,7 @@ const ProductCard = ({ car }: { car: ICar & CarModel }) => {
               }}
             />
           </View>
-          <Button size="$3" position="absolute" top={-20} right={0} circular>
-            <Heart height={18} width={18} />
-          </Button>
+          <ButtonHeart carId={car.detail?.id || car?.id} />
         </View>
         <Text fontWeight="bold" marginTop={10} fontSize={15}>
           {car?.modelName || car.detail.targetText}

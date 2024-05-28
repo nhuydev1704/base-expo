@@ -35,7 +35,7 @@ const ProductListPage = () => {
   if (!brand?.data) return;
 
   return (
-    <ScrollView stickyHeaderIndices={[1]}>
+    <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[1]}>
       {Screen}
       <BrandInfo info={brand.data.info} />
       <CarList
