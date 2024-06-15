@@ -33,7 +33,7 @@ require('dotenv').config({
 
 // TODO: Replace these values with your own
 
-const BUNDLE_ID = 'com.car.app'; // ios bundle id
+const BUNDLE_ID = 'com.carView.app'; // ios bundle id
 const PACKAGE = 'com.car.app'; // android package name
 const NAME = 'Tìm kiếm xe'; // app name
 const EXPO_ACCOUNT_OWNER = 'nguyennhuy1704'; // expo account owner

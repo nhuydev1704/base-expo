@@ -1,4 +1,4 @@
-package com.car.app.development
+package com.car.app
 
 import android.app.Application
 import android.content.res.Configuration

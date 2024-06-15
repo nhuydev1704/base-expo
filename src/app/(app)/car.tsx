@@ -15,12 +15,13 @@ export default function Recommend() {
   const debounceSearch = useDebounceValue(search, 300);
 
   const { data } = useBrands();
-  const dataRender = data?.map((item: any) => ({
-    key: item.id,
-    value: item.alt,
-    src: item.src,
-    id: item.id,
-  }));
+  const dataRender =
+    data?.map((item: any) => ({
+      key: item.id,
+      value: item.alt,
+      src: item.src,
+      id: item.id,
+    })) || [];
 
   const onChange = React.useCallback((value: string) => {
     setSearch(value);
